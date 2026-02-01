@@ -1,0 +1,19 @@
+# Ejemplos de configuración crontab para backup MySQL
+
+# Backup diario a las 2:00 AM
+0 2 * * * /ruta/completa/backup_mysql_native.sh >/dev/null 2>&1
+
+# Backup cada 6 horas
+0 */6 * * * /ruta/completa/backup_mysql_native.sh >/dev/null 2>&1
+
+# Backup solo días laborables (lunes a viernes) a las 3:00 AM
+0 3 * * 1-5 /ruta/completa/backup_mysql_native.sh >/dev/null 2>&1
+
+# Backup semanal (domingos a las 1:00 AM)
+0 1 * * 0 /ruta/completa/backup_mysql_native.sh >/dev/null 2>&1
+
+# Backup con logging detallado
+0 2 * * * /ruta/completa/backup_mysql_native.sh >> /var/log/mysql_backup_cron.log 2>&1
+
+# Backup con notificación por email en caso de error
+0 2 * * * /ruta/completa/backup_mysql_native.sh || echo "Backup failed" | mail -s "MySQL Backup Error" admin@example.com

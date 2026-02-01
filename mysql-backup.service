@@ -1,0 +1,11 @@
+[Unit]
+Description=MySQL Database Backup
+After=network.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/ruta/a/tus/scripts
+ExecStart=/ruta/completa/backup_mysql_native.sh
+StandardOutput=journal
+StandardError=journal
